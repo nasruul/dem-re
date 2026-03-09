@@ -1,3 +1,1 @@
-# test
-
-some decs.
+Belajar Git
