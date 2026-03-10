@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceTrack - Manajemen Keuangan Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Finance<span>Track</span></h1>
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#tracker">Tracker</a></li>
+                <li><a href="#laporan">Laporan</a></li>
+                <li><a href="#tips">Tips</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Kelola Keuanganmu dengan Bijak</h2>
+                <p>Pantau pemasukan dan pengeluaranmu dalam satu platform sederhana</p>
+                <a href="#tracker" class="btn btn-primary">Mulai Tracking</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>Total Saldo</h3>
+                    <p class="amount" id="totalSaldo">Rp 0</p>
+                </div>
+                <div class="stat-card income">
+                    <h3>Pemasukan</h3>
+                    <p class="amount" id="totalPemasukan">Rp 0</p>
+                </div>
+                <div class="stat-card expense">
+                    <h3>Pengeluaran</h3>
+                    <p class="amount" id="totalPengeluaran">Rp 0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="tracker" class="tracker-section">
+            <div class="container">
+                <h2 class="section-title">Financial Tracker</h2>
+                
+                <div class="tracker-container">
+                    <div class="input-form">
+                        <h3>Tambah Transaksi Baru</h3>
+                        <form id="transactionForm">
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <input type="text" id="deskripsi" placeholder="Contoh: Gaji, Makan, Transport" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="jumlah">Jumlah (Rp)</label>
+                                <input type="number" id="jumlah" placeholder="Masukkan nominal" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tipe">Tipe</label>
+                                <select id="tipe" required>
+                                    <option value="pemasukan">Pemasukan</option>
+                                    <option value="pengeluaran">Pengeluaran</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+                                <select id="kategori" required>
+                                    <option value="gaji">Gaji</option>
+                                    <option value="makanan">Makanan & Minuman</option>
+                                    <option value="transport">Transportasi</option>
+                                    <option value="hiburan">Hiburan</option>
+                                    <option value="tagihan">Tagihan</option>
+                                    <option value="belanja">Belanja</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="date" id="tanggal" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-submit">Tambah Transaksi</button>
+                        </form>
+                    </div>
+                    
+                    <div class="transaction-list">
+                        <h3>Daftar Transaksi</h3>
+                        <div class="filter-options">
+                            <select id="filterTipe">
+                                <option value="semua">Semua Transaksi</option>
+                                <option value="pemasukan">Pemasukan</option>
+                                <option value="pengeluaran">Pengeluaran</option>
+                            </select>
+                            <select id="filterKategori">
+                                <option value="semua">Semua Kategori</option>
+                                <option value="gaji">Gaji</option>
+                                <option value="makanan">Makanan</option>
+                                <option value="transport">Transport</option>
+                                <option value="hiburan">Hiburan</option>
+                                <option value="tagihan">Tagihan</option>
+                                <option value="belanja">Belanja</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div id="transactionsContainer">
+                            <!-- Transactions will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="laporan" class="report-section">
+            <div class="container">
+                <h2 class="section-title">Laporan Keuangan</h2>
+                <div class="report-container">
+                    <div class="chart-container">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h4>Pemasukan Bulan Ini</h4>
+                            <p class="amount" id="pemasukanBulanIni">Rp 0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Pengeluaran Bulan Ini</h4>
+                            <p class="amount" id="pengeluaranBulanIni">Rp 0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Pengeluaran Terbesar</h4>
+                            <p class="amount" id="pengeluaranTerbesar">Rp 0</p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Rata-rata Harian</h4>
+                            <p class="amount" id="rataHarian">Rp 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tips" class="tips-section">
+            <div class="container">
+                <h2 class="section-title">Tips Keuangan</h2>
+                <div class="tips-grid" id="tipsContainer">
+                    <!-- Tips will be inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 FinanceTrack. Kelola Keuangan dengan Bijak.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
